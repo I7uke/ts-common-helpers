@@ -9,6 +9,10 @@ type ConvertToNumberOptions =  {
  */
 export function convertToNumber(inputOptions: ConvertToNumberOptions): number {
     if (typeof inputOptions.valueForConvert === 'number') {
+        if(isNaN(inputOptions.valueForConvert)) {
+            return inputOptions.defaultValue;
+        }
+
         return inputOptions.valueForConvert;
     }
 
