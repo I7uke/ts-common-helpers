@@ -1,5 +1,5 @@
 type Options = {
-    readonly defaultValue: string;
+    readonly defaultValue?: string;
     readonly date: Date | undefined | null;
     readonly format: 'DD.MM.YYYY'
         | 'DD-MM-YYYY'
@@ -16,7 +16,17 @@ export function dateFormatForView(inputOptions: Options): string {
         return defaultValue;
     }
 
-    if (!+inputOptions.date) {
+    if(typeof inputOptions.date !== 'object'){
+        return defaultValue;
+    }
+
+    const timestamp: number = Number(inputOptions.date);
+
+    if (!timestamp) {
+        return defaultValue;
+    }
+
+    if (isNaN(timestamp)) {
         return defaultValue;
     }
 

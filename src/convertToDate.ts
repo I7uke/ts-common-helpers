@@ -5,6 +5,7 @@ type Options = {
 }
 
 export function convertToDate(inputOptions: Options): Date | null {
+
     if (!inputOptions.valueForConvert) {
         return inputOptions.defaultValue;
     }
@@ -45,7 +46,21 @@ export function convertToDate(inputOptions: Options): Date | null {
     }
 
     if (typeof inputOptions.valueForConvert === 'object') {
-        const dateObject: Date = inputOptions.valueForConvert;
+        if (Array.isArray(inputOptions.valueForConvert)) {
+            return inputOptions.defaultValue;
+        }
+
+        const dateNumber: number = Number(inputOptions.valueForConvert);
+
+        if(!dateNumber) {
+            return inputOptions.defaultValue;
+        }
+
+        if (isNaN(+dateNumber)) {
+            return inputOptions.defaultValue;
+        }
+
+        const dateObject: Date = new Date(dateNumber);
 
         if (isNaN(+dateObject)) {
             return inputOptions.defaultValue;

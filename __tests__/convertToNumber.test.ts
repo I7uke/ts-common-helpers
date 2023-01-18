@@ -4,85 +4,113 @@ test('Число -5', () => {
     expect(convertToNumber({
         defaultValue: 0,
         valueForConvert: -5
-    })).toBe(-5);
+    })).toStrictEqual(-5);
 });
 
 test('Число 0', () => {
     expect(convertToNumber({
         defaultValue: 0,
         valueForConvert: 0
-    })).toBe(0);
+    })).toStrictEqual(0);
 });
 
 test('Число 1', () => {
     expect(convertToNumber({
         defaultValue: 0,
         valueForConvert: 1
-    })).toBe(1);
+    })).toStrictEqual(1);
 });
-
 
 test('Строковое -300', () => {
     expect(convertToNumber({
         defaultValue: 0,
         valueForConvert: '-300'
-    })).toBe(-300);
+    })).toStrictEqual(-300);
 });
 
 test('Строковое 0', () => {
     expect(convertToNumber({
         defaultValue: 0,
         valueForConvert: '0'
-    })).toBe(0);
+    })).toStrictEqual(0);
 });
 
 test('Строковое 1000', () => {
     expect(convertToNumber({
         defaultValue: 0,
         valueForConvert: '1000'
-    })).toBe(1000);
+    })).toStrictEqual(1000);
 });
 
 test('Строковое Lalala', () => {
     expect(convertToNumber({
         defaultValue: 100,
         valueForConvert: 'Lalala'
-    })).toBe(100);
+    })).toStrictEqual(100);
 });
+
+test('Строковое -1234.56789', () => {
+    expect(convertToNumber({
+        defaultValue: 100,
+        valueForConvert: '-1234.56789'
+    })).toStrictEqual(-1234.56789);
+});
+
+test('Строковое -1234,56789', () => {
+    expect(convertToNumber({
+        defaultValue: 100,
+        valueForConvert: '-1234,56789'
+    })).toStrictEqual(100);
+});
+
+test('Строковое 1234.56789', () => {
+    expect(convertToNumber({
+        defaultValue: 100,
+        valueForConvert: '1234.56789'
+    })).toStrictEqual(1234.56789);
+});
+
+test('Строковое 1234,56789', () => {
+    expect(convertToNumber({
+        defaultValue: 100,
+        valueForConvert: '1234,56789'
+    })).toStrictEqual(100);
+});
+
 
 test('undefined', () => {
     expect(convertToNumber({
         defaultValue: 5,
         valueForConvert: undefined
-    })).toBe(5);
+    })).toStrictEqual(5);
 });
 
 test('null', () => {
     expect(convertToNumber({
         defaultValue: 6,
         valueForConvert: null
-    })).toBe(6);
+    })).toStrictEqual(6);
 });
 
-test('object', () => {
+test('Некорректное значение - object', () => {
     expect(convertToNumber({
         defaultValue: 7,
         // @ts-ignore
         valueForConvert: {test: 123}
-    })).toBe(7);
+    })).toStrictEqual(7);
 });
 
-test('array', () => {
+test('Некорректное значение - array', () => {
     expect(convertToNumber({
         defaultValue: 8,
         // @ts-ignore
         valueForConvert: []
-    })).toBe(8);
+    })).toStrictEqual(8);
 });
 
 test('NaN', () => {
     expect(convertToNumber({
         defaultValue: 9,
         valueForConvert: NaN
-    })).toBe(9);
+    })).toStrictEqual(9);
 });

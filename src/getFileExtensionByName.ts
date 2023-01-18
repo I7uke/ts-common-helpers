@@ -2,19 +2,33 @@
  * Получить расширение файла по его имени
  * @param inputFileName
  */
-export function getFileExtensionByName(inputFileName: string): string {
-    const tmp = inputFileName.split('.');
+export function getFileExtensionByName(inputFileName: string | undefined | null): string {
+    const unknownFileExtension: string = 'unknown';
 
-    if(!tmp.length) {
-        return 'unknown';
+    if (!inputFileName) {
+        return unknownFileExtension;
     }
 
-    const fileExtension: string = tmp[tmp.length-1];
+    if (typeof inputFileName !== 'string') {
+        return unknownFileExtension;
+    }
 
-    if(fileExtension) {
+    if (inputFileName.length < 3) {
+        return unknownFileExtension;
+    }
+
+    const tmp = inputFileName.split('.');
+
+    if (!tmp.length) {
+        return unknownFileExtension;
+    }
+
+    const fileExtension: string = tmp[tmp.length - 1];
+
+    if (fileExtension) {
         return fileExtension.toLowerCase();
     }
 
-    return 'unknown';
+    return unknownFileExtension;
 }
 

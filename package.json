@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test-convertToDate": "jest convertToDate.test.ts",
+    "test-convertToNumber": "jest convertToNumber.test.ts",
+    "test-dateFormatForView": "jest dateFormatForView.test.ts",
+    "test-fixedLengthString": "jest fixedLengthString.test.ts",
+    "test-getFileExtensionByName": "jest getFileExtensionByName.test.ts"
   },
   "repository": {
     "type": "git",
