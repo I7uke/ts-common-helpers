@@ -20,34 +20,42 @@ export function getIdFromUrl<T extends ValidTypesId>(inputOptions: BaseIdType<T>
         return inputOptions.defaultValue;
     }
 
+    if (typeof url !== 'string') {
+        return inputOptions.defaultValue;
+    }
+
+    if (url.length < 2) {
+        return inputOptions.defaultValue;
+    }
+
     const splitArrTmp = url.split('/');
 
     if (!Array.isArray(splitArrTmp)) {
         return inputOptions.defaultValue
     }
 
-    if (!splitArrTmp.length) {
+    if (splitArrTmp.length < 2) {
         return inputOptions.defaultValue
     }
 
     // Получаем последний элемент
-    const lastItem: string | undefined | null = splitArrTmp[splitArrTmp.length - 1];
+    let lastItem: string | undefined | null = splitArrTmp[splitArrTmp.length - 1];
 
-    if(typeof lastItem !== 'string'){
+    if (typeof lastItem !== 'string') {
         return inputOptions.defaultValue;
     }
 
-    if(!lastItem) {
+    if (!lastItem) {
         return inputOptions.defaultValue;
     }
 
-    if(inputOptions.idType === 'string') {
+    if (inputOptions.idType === 'string') {
         return lastItem as ValueType<T>;
     }
 
-    if(inputOptions.idType === 'number') {
+    if (inputOptions.idType === 'number') {
         const lastItemNumber: number = Number(lastItem);
-        if(isNaN(lastItemNumber)) {
+        if (isNaN(lastItemNumber)) {
             return inputOptions.defaultValue;
         }
 

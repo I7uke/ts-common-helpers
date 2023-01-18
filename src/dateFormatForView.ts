@@ -9,8 +9,22 @@ type Options = {
         | 'DD-MM-YYYY HH:MM:SS';
 }
 
+function validationDefaultValue(inputValue: string | undefined | null): string {
+    const emptyValue: string = 'Invalid Date';
+
+    if(!inputValue){
+        return emptyValue;
+    }
+
+    if(typeof inputValue !== 'string'){
+        return emptyValue;
+    }
+
+    return inputValue;
+}
+
 export function dateFormatForView(inputOptions: Options): string {
-    const defaultValue: string = inputOptions.defaultValue ? inputOptions.defaultValue : 'Invalid Date';
+    const defaultValue: string = validationDefaultValue(inputOptions.defaultValue);
 
     if (!inputOptions.date) {
         return defaultValue;

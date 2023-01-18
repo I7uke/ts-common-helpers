@@ -96,3 +96,13 @@ test('Некорректное значение - объект', () => {
         maxLength: 11
     })).toStrictEqual('Ошибка!');
 });
+
+test('Некорректное defaultValue', () => {
+    expect(fixedLengthString({
+        // @ts-ignore
+        stringToFixed: {test:123},
+        // @ts-ignore
+        defaultValue: [],
+        maxLength: 11
+    })).toStrictEqual('invalid string');
+});

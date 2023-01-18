@@ -110,3 +110,12 @@ test('Некорректное значение - объект', () => {
         valueForConvert: {test:123}
     })).toStrictEqual(defaultValueDate);
 });
+
+test('Некорректное defaultValue', () => {
+    expect(convertToDate({
+        // @ts-ignore
+        defaultValue: [],
+        // @ts-ignore
+        valueForConvert: {test:123}
+    })).toStrictEqual(null);
+});

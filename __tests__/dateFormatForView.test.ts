@@ -119,3 +119,13 @@ test('Некорректное значение - число', () => {
         format: 'DD-MM-YYYY HH:MM:SS'
     })).toStrictEqual('Ошибка!');
 });
+
+test('Некорректное defaultValue', () => {
+    expect(dateFormatForView({
+        // @ts-ignore
+        defaultValue: [],
+        // @ts-ignore
+        date: 1674031318308,
+        format: 'DD-MM-YYYY HH:MM:SS'
+    })).toStrictEqual('Invalid Date');
+});

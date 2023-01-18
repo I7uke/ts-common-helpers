@@ -114,3 +114,12 @@ test('NaN', () => {
         valueForConvert: NaN
     })).toStrictEqual(9);
 });
+
+test('Некорректное defaultValue', () => {
+    expect(convertToNumber({
+        // @ts-ignore
+        defaultValue: [],
+        // @ts-ignore
+        valueForConvert: []
+    })).toStrictEqual(0);
+});
