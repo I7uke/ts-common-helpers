@@ -1,18 +1,18 @@
 type Options = {
     readonly valueForValidation: string[] | null | undefined;
-    readonly defaultValue: string[];
 }
 
 export function validationStringArray(inputOptions: Options): string[] {
+
+    const result: string[] = [];
+
     if (!inputOptions.valueForValidation) {
-        return inputOptions.defaultValue;
+        return result;
     }
 
     if (!Array.isArray(inputOptions.valueForValidation)) {
-        return inputOptions.defaultValue;
+        return result;
     }
-
-    const result: string[] = [];
 
     for (const item of inputOptions.valueForValidation) {
         if (typeof item === 'string') {

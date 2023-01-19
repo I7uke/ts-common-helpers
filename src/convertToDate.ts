@@ -1,6 +1,6 @@
 type Options = {
     readonly valueForConvert: string | Date | number | null | undefined;
-    readonly defaultValue: Date | null;
+    readonly defaultValue?: Date | null;
     readonly changeTime?: 'startDay' | 'endDay';
 }
 

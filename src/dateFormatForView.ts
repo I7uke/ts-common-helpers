@@ -10,11 +10,7 @@ type Options = {
 }
 
 function validationDefaultValue(inputValue: string | undefined | null): string {
-    const emptyValue: string = 'Invalid Date';
-
-    if(!inputValue){
-        return emptyValue;
-    }
+    const emptyValue: string = '';
 
     if(typeof inputValue !== 'string'){
         return emptyValue;

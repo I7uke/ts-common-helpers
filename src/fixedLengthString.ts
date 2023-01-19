@@ -5,11 +5,7 @@ type FixedLengthStringOptions = {
 }
 
 function validationDefaultValue(inputValue: string | undefined | null): string {
-    const emptyValue: string = 'invalid string';
-
-    if (!inputValue) {
-        return emptyValue;
-    }
+    const emptyValue: string = '';
 
     if (typeof inputValue !== 'string') {
         return emptyValue;

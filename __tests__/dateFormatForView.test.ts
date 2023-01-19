@@ -48,7 +48,15 @@ test('Некорректная дата, без текста ошибки', () =
     expect(dateFormatForView({
         date: new Date('Lala'),
         format: 'DD-MM-YYYY HH:MM:SS'
-    })).toStrictEqual('Invalid Date');
+    })).toStrictEqual('');
+});
+
+test('Пустой defaultValue', () => {
+    expect(dateFormatForView({
+        date: new Date('Lala'),
+        defaultValue: '',
+        format: 'DD-MM-YYYY HH:MM:SS'
+    })).toStrictEqual('');
 });
 
 test('Некорректная дата с текстом ошибки', () => {
@@ -127,5 +135,5 @@ test('Некорректное defaultValue', () => {
         // @ts-ignore
         date: 1674031318308,
         format: 'DD-MM-YYYY HH:MM:SS'
-    })).toStrictEqual('Invalid Date');
+    })).toStrictEqual('');
 });

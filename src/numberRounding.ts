@@ -6,7 +6,7 @@ type Options = {
     /**
      * Точность, количество знаков после запятой
      */
-    readonly accuracy: number | undefined | null;
+    readonly accuracy?: number;
 }
 
 export function numberRounding(inputOptions: Options): number {
@@ -20,7 +20,6 @@ export function numberRounding(inputOptions: Options): number {
 
     const numberToRound: number = inputOptions.number;
     const inputAccuracy = inputOptions.accuracy;
-
 
     if (typeof inputAccuracy !== 'number') {
         return Math.round(numberToRound);

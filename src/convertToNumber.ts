@@ -1,5 +1,5 @@
 type ConvertToNumberOptions = {
-    readonly defaultValue: number;
+    readonly defaultValue?: number;
     readonly valueForConvert: string | number | undefined | null;
 }
 

@@ -5,11 +5,11 @@
 export function getFileExtensionByName(inputFileName: string | undefined | null): string {
     const unknownFileExtension: string = 'unknown';
 
-    if (!inputFileName) {
+    if (typeof inputFileName !== 'string') {
         return unknownFileExtension;
     }
 
-    if (typeof inputFileName !== 'string') {
+    if (!inputFileName) {
         return unknownFileExtension;
     }
 

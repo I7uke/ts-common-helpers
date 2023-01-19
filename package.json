@@ -11,7 +11,12 @@
     "test-fixedLengthString": "jest fixedLengthString.test.ts",
     "test-getFileExtensionByName": "jest getFileExtensionByName.test.ts",
     "test-getIdFromUrl": "jest getIdFromUrl.test.ts",
-    "test-getUrlParameters": "jest getUrlParameters.test.ts"
+    "test-getUrlParameters": "jest getUrlParameters.test.ts",
+    "test-numberRounding": "jest numberRounding.test.ts",
+    "test-validationNumber": "jest validationNumber.test.ts",
+    "test-validationNumberArray": "jest validationNumberArray.test.ts",
+    "test-validationString": "jest validationString.test.ts",
+    "test-validationStringArray": "jest validationStringArray.test.ts"
   },
   "repository": {
     "type": "git",

@@ -13,7 +13,7 @@ test('Пустая строка, без значения по умолчанию
     expect(fixedLengthString({
         stringToFixed: '',
         maxLength: 11
-    })).toStrictEqual('invalid string');
+    })).toStrictEqual('');
 });
 
 test('Пустая строка, с значением по умолчанию', () => {
@@ -43,6 +43,13 @@ test('maxLength: 1', () => {
         stringToFixed: testString,
         maxLength: 1
     })).toStrictEqual('L...');
+});
+
+test('Пустой defaultValue', () => {
+    expect(fixedLengthString({
+        stringToFixed: undefined,
+        maxLength: 11
+    })).toStrictEqual('');
 });
 
 test('undefined', () => {
@@ -104,5 +111,5 @@ test('Некорректное defaultValue', () => {
         // @ts-ignore
         defaultValue: [],
         maxLength: 11
-    })).toStrictEqual('invalid string');
+    })).toStrictEqual('');
 });

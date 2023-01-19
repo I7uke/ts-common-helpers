@@ -1,17 +1,19 @@
 type Options = {
     readonly valueForValidation: string | null | undefined;
-    readonly defaultValue: string;
+    readonly defaultValue?: string;
 }
 
 export function validationString(inputOptions: Options): string {
+    const defaultValue: string = typeof inputOptions.defaultValue === 'string' ? inputOptions.defaultValue : '';
+
     if (typeof inputOptions.valueForValidation !== 'string') {
-        return inputOptions.defaultValue;
+        return defaultValue;
     }
 
     const resultString = inputOptions.valueForValidation.trim();
 
     if (!resultString) {
-        return inputOptions.defaultValue;
+        return defaultValue;
     }
 
     return resultString;
