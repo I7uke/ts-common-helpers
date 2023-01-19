@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import {getIdFromUrl} from "../src/getIdFromUrl";
+import getIdFromUrl from "../src/getIdFromUrl";
 
 // @ts-ignore
 delete window.location;

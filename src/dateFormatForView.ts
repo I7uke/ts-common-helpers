@@ -19,7 +19,7 @@ function validationDefaultValue(inputValue: string | undefined | null): string {
     return inputValue;
 }
 
-export function dateFormatForView(inputOptions: Options): string {
+export default  function dateFormatForView(inputOptions: Options): string {
     const defaultValue: string = validationDefaultValue(inputOptions.defaultValue);
 
     if (!inputOptions.date) {

@@ -3,7 +3,7 @@ type Options = {
     readonly defaultValue?: number;
 }
 
-export function validationNumber(inputOptions: Options): number {
+export default  function validationNumber(inputOptions: Options): number {
     let defaultValue: number = typeof inputOptions.defaultValue === 'number' ? inputOptions.defaultValue : 0;
 
     if (isNaN(defaultValue)) {

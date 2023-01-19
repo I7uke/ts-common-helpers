@@ -33,7 +33,7 @@ function validationDefaultValue(inputValue: Date | null | undefined): Date | nul
 }
 
 
-export function convertToDate(inputOptions: Options): Date | null {
+export default function convertToDate(inputOptions: Options): Date | null {
     const defaultValue: Date | null = validationDefaultValue(inputOptions.defaultValue);
 
     if (!inputOptions.valueForConvert) {

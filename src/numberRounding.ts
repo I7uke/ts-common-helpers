@@ -9,7 +9,7 @@ type Options = {
     readonly accuracy?: number;
 }
 
-export function numberRounding(inputOptions: Options): number {
+export default  function numberRounding(inputOptions: Options): number {
     if(typeof inputOptions.number !== 'number'){
         return 0;
     }

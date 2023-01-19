@@ -2,7 +2,7 @@ type Options = {
     readonly valueForValidation: string[] | null | undefined;
 }
 
-export function validationStringArray(inputOptions: Options): string[] {
+export default  function validationStringArray(inputOptions: Options): string[] {
 
     const result: string[] = [];
 

@@ -3,7 +3,7 @@ type Options = {
     readonly defaultValue?: string;
 }
 
-export function validationString(inputOptions: Options): string {
+export default  function validationString(inputOptions: Options): string {
     const defaultValue: string = typeof inputOptions.defaultValue === 'string' ? inputOptions.defaultValue : '';
 
     if (typeof inputOptions.valueForValidation !== 'string') {

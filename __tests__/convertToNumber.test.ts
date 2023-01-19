@@ -1,4 +1,4 @@
-import {convertToNumber} from "../src/convertToNumber";
+import convertToNumber from "../src/convertToNumber";
 
 test('Число -5', () => {
     expect(convertToNumber({

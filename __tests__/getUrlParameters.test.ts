@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import {getUrlParametersParser} from "../src/getUrlParametersParser";
+import getUrlParametersParser from "../src/getUrlParametersParser";
 
 
 // @ts-ignore

@@ -27,7 +27,7 @@ function validationMaxLength(inputValue: number | string | null): number {
 }
 
 
-export function fixedLengthString(inputOptions: FixedLengthStringOptions): string {
+export default  function fixedLengthString(inputOptions: FixedLengthStringOptions): string {
     const defaultValue:string = validationDefaultValue(inputOptions.defaultValue);
     const maxLength: number = validationMaxLength(inputOptions.maxLength);
 

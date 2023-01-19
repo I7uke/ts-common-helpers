@@ -13,7 +13,7 @@ interface BaseIdType<IdType extends ValidTypesId> {
  * Последний элемент (someID)
  * @param inputOptions
  */
-export function getIdFromUrl<T extends ValidTypesId>(inputOptions: BaseIdType<T>): ValueType<T> {
+export default  function getIdFromUrl<T extends ValidTypesId>(inputOptions: BaseIdType<T>): ValueType<T> {
     const url: string = location.href;
 
     if (!url) {
