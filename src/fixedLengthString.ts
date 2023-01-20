@@ -1,6 +1,15 @@
 type FixedLengthStringOptions = {
+    /**
+     * Целевая строка
+     */
     readonly stringToFixed: string | undefined | null;
+    /**
+     * Максимальная длинна строки
+     */
     readonly maxLength: number;
+    /**
+     * Значение по умолчанию, будет возвращено в случае если целевое значение не строка или пустая строка
+     */
     readonly defaultValue?: string;
 }
 
@@ -26,9 +35,12 @@ function validationMaxLength(inputValue: number | string | null): number {
     return inputValue;
 }
 
-
-export default  function fixedLengthString(inputOptions: FixedLengthStringOptions): string {
-    const defaultValue:string = validationDefaultValue(inputOptions.defaultValue);
+/**
+ * Ограничить строку до заданного количества символов
+ * @param inputOptions
+ */
+export function fixedLengthString(inputOptions: FixedLengthStringOptions): string {
+    const defaultValue: string = validationDefaultValue(inputOptions.defaultValue);
     const maxLength: number = validationMaxLength(inputOptions.maxLength);
 
     if (typeof inputOptions.stringToFixed !== 'string') {

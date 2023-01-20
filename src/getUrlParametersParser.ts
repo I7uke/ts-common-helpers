@@ -1,4 +1,4 @@
-export default  function getUrlParametersParser(): URLSearchParams {
+export function getUrlParametersParser(): URLSearchParams {
     const url: string = location.href;
 
     if (!url) {

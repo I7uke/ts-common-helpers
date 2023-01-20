@@ -12,21 +12,21 @@ type Options = {
 function validationDefaultValue(inputValue: string | undefined | null): string {
     const emptyValue: string = '';
 
-    if(typeof inputValue !== 'string'){
+    if (typeof inputValue !== 'string') {
         return emptyValue;
     }
 
     return inputValue;
 }
 
-export default  function dateFormatForView(inputOptions: Options): string {
+export function dateFormatForView(inputOptions: Options): string {
     const defaultValue: string = validationDefaultValue(inputOptions.defaultValue);
 
     if (!inputOptions.date) {
         return defaultValue;
     }
 
-    if(typeof inputOptions.date !== 'object'){
+    if (typeof inputOptions.date !== 'object') {
         return defaultValue;
     }
 

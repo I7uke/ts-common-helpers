@@ -1,19 +1,21 @@
-type Options = {
-    readonly valueForValidation: number[] | null | undefined;
-}
-
-export default  function validationNumberArray(inputOptions: Options): number[] {
+/**
+ * Проверить массив чисел
+ * В случае если массив смешанный, будет возвращен массив содержащий только числа
+ * Если передан не массив, будет возвращен пустой массив
+ * @param arr
+ */
+export function validationNumberArray(arr: number[] | null | undefined): number[] {
     const result: number[] = [];
 
-    if (!inputOptions.valueForValidation) {
+    if (!arr) {
         return result;
     }
 
-    if (!Array.isArray(inputOptions.valueForValidation)) {
+    if (!Array.isArray(arr)) {
         return result;
     }
 
-    for (const item of inputOptions.valueForValidation) {
+    for (const item of arr) {
         if (typeof item === 'number') {
             result.push(item);
         }

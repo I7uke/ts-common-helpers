@@ -1,4 +1,4 @@
-import validationNumber from "../src/validationNumber";
+import {validationNumber} from "../src/validationNumber";
 
 test('Число -100', () => {
     expect(validationNumber({
@@ -82,15 +82,15 @@ test('Некорректное значение valueForValidation - объек�
     expect(validationNumber({
         defaultValue: 5,
         // @ts-ignore
-        valueForValidation: {test:123}
+        valueForValidation: {test: 123}
     })).toStrictEqual(5);
 });
 
 test('Некорректные все значение', () => {
     expect(validationNumber({
         // @ts-ignore
-        defaultValue: {test:123},
+        defaultValue: {test: 123},
         // @ts-ignore
-        valueForValidation: {test:123}
+        valueForValidation: {test: 123}
     })).toStrictEqual(0);
 });

@@ -1,10 +1,19 @@
 type Options = {
+    /**
+     * Значение для преобразования
+     */
     readonly valueForConvert: string | Date | number | null | undefined;
+    /**
+     * Значение по умолчанию, применяется если не удалось выполнить преобразование
+     */
     readonly defaultValue?: Date | null;
+    /**
+     * Изменить время полученной даты
+     */
     readonly changeTime?: 'startDay' | 'endDay';
 }
 
-function validationDefaultValue(inputValue: Date | null | undefined): Date | null {
+function validationDate(inputValue: Date | null | undefined): Date | null {
     if (!inputValue) {
         return null;
     }
@@ -13,17 +22,17 @@ function validationDefaultValue(inputValue: Date | null | undefined): Date | nul
         return null;
     }
 
-    const defaultValueTimestamp = Number(inputValue);
+    const valueTimestamp = Number(inputValue);
 
-    if (!defaultValueTimestamp) {
+    if (!valueTimestamp) {
         return null;
     }
 
-    if (isNaN(defaultValueTimestamp)) {
+    if (isNaN(valueTimestamp)) {
         return null;
     }
 
-    const result = new Date(defaultValueTimestamp);
+    const result = new Date(valueTimestamp);
 
     if (isNaN(+result)) {
         return null;
@@ -32,12 +41,15 @@ function validationDefaultValue(inputValue: Date | null | undefined): Date | nul
     return result;
 }
 
-
-export default function convertToDate(inputOptions: Options): Date | null {
-    const defaultValue: Date | null = validationDefaultValue(inputOptions.defaultValue);
+/**
+ * Преобразовать строку или число к дате
+ * Если передана дата, выполнит ее проверку и в случае успеха вернет переданную дату
+ * @param inputOptions
+ */
+export function convertToDate(inputOptions: Options): Date | null {
 
     if (!inputOptions.valueForConvert) {
-        return defaultValue;
+        return validationDate(inputOptions.defaultValue);
     }
 
     let resultDate: Date | null = null;
@@ -46,13 +58,13 @@ export default function convertToDate(inputOptions: Options): Date | null {
         const dateString = inputOptions.valueForConvert.trim();
 
         if (!dateString) {
-            return defaultValue;
+            return validationDate(inputOptions.defaultValue);
         }
 
         const resultDateConvertFromString = new Date(dateString);
 
         if (isNaN(+resultDateConvertFromString)) {
-            return defaultValue;
+            return validationDate(inputOptions.defaultValue);
         }
 
         resultDate = resultDateConvertFromString;
@@ -61,46 +73,31 @@ export default function convertToDate(inputOptions: Options): Date | null {
     if (typeof inputOptions.valueForConvert === 'number') {
         const dateNumber: number = inputOptions.valueForConvert;
 
-
         if (dateNumber <= 0) {
-            return defaultValue;
+            return validationDate(inputOptions.defaultValue);
         }
 
         const resultDateConvertFromNumber = new Date(dateNumber);
 
         if (isNaN(+resultDateConvertFromNumber)) {
-            return defaultValue;
+            return validationDate(inputOptions.defaultValue);
         }
 
         resultDate = resultDateConvertFromNumber;
     }
 
     if (typeof inputOptions.valueForConvert === 'object') {
-        if (Array.isArray(inputOptions.valueForConvert)) {
-            return defaultValue;
-        }
+        const dateObject = validationDate(inputOptions.valueForConvert);
 
-        const dateNumber: number = Number(inputOptions.valueForConvert);
-
-        if (!dateNumber) {
-            return defaultValue;
-        }
-
-        if (isNaN(+dateNumber)) {
-            return defaultValue;
-        }
-
-        const dateObject: Date = new Date(dateNumber);
-
-        if (isNaN(+dateObject)) {
-            return defaultValue;
+        if(!dateObject){
+            return validationDate(inputOptions.defaultValue);
         }
 
         resultDate = dateObject;
     }
 
     if (!resultDate) {
-        return defaultValue;
+        return validationDate(inputOptions.defaultValue);
     }
 
     if (inputOptions.changeTime) {

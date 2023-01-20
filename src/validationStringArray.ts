@@ -1,20 +1,22 @@
-type Options = {
-    readonly valueForValidation: string[] | null | undefined;
-}
-
-export default  function validationStringArray(inputOptions: Options): string[] {
+/**
+ * Проверить массив строк
+ * В случае если массив смешанный, будет возвращен массив содержащий только строки
+ * Если передан не массив, будет возвращен пустой массив
+ * @param arr
+ */
+export function validationStringArray(arr: string[] | null | undefined): string[] {
 
     const result: string[] = [];
 
-    if (!inputOptions.valueForValidation) {
+    if (!arr) {
         return result;
     }
 
-    if (!Array.isArray(inputOptions.valueForValidation)) {
+    if (!Array.isArray(arr)) {
         return result;
     }
 
-    for (const item of inputOptions.valueForValidation) {
+    for (const item of arr) {
         if (typeof item === 'string') {
             result.push(item);
         }
