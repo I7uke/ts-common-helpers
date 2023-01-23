@@ -12,7 +12,20 @@ const IS_DEVELOPMENT: boolean = process.env.NODE_ENV === 'development';
 
 const config: webpack.Configuration = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-    entry: './index.ts',
+    entry: {
+        'convertToDate': './src/convertToDate.ts',
+        'convertToNumber': './src/convertToNumber.ts',
+        'dateFormatForView': './src/dateFormatForView.ts',
+        'fixedLengthString': './src/fixedLengthString.ts',
+        'getFileExtensionByName': './src/getFileExtensionByName.ts',
+        'getIdFromUrl': './src/getIdFromUrl.ts',
+        'getUrlParametersParser': './src/getUrlParametersParser.ts',
+        'numberRounding': './src/numberRounding.ts',
+        'validationNumber': './src/validationNumber.ts',
+        'validationNumberArray': './src/validationNumberArray.ts',
+        'validationString': './src/validationString.ts',
+        'validationStringArray': './src/validationStringArray.ts',
+    },
     devtool: process.env.NODE_ENV === 'production' ? false : 'source-map',
     module: {
         rules: [
@@ -42,7 +55,7 @@ const config: webpack.Configuration = {
     ],
     output: {
         path: path.resolve('./dist'),
-        filename: 'index.js',
+        filename: "[name].js",
         library: {
             type: 'umd',
         },

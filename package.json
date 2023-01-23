@@ -22,7 +22,7 @@
     "type": "git",
     "url": "git+https://github.com/CoraxEidolon/ts-common-helpers.git"
   },
-  "main": "./dist/index.js",
+  "main": "./dist",
   "author": "Ivan",
   "license": "ISC",
   "bugs": {
