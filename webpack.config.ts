@@ -1,7 +1,6 @@
 ﻿import * as path from 'path';
 import * as webpack from 'webpack';
 import {CleanWebpackPlugin} from 'clean-webpack-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 //const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 //#region Константы
@@ -13,6 +12,7 @@ const IS_DEVELOPMENT: boolean = process.env.NODE_ENV === 'development';
 const config: webpack.Configuration = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     entry: {
+        'index': './src/index.ts',
         'convertToDate': './src/convertToDate.ts',
         'convertToNumber': './src/convertToNumber.ts',
         'dateFormatForView': './src/dateFormatForView.ts',

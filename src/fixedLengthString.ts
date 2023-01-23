@@ -39,7 +39,7 @@ function validationMaxLength(inputValue: number | string | null): number {
  * Ограничить строку до заданного количества символов
  * @param inputOptions
  */
-export function fixedLengthString(inputOptions: FixedLengthStringOptions): string {
+export default function fixedLengthString(inputOptions: FixedLengthStringOptions): string {
     const defaultValue: string = validationDefaultValue(inputOptions.defaultValue);
     const maxLength: number = validationMaxLength(inputOptions.maxLength);
 

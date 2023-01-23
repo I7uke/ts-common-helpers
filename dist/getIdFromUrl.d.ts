@@ -20,5 +20,5 @@ interface BaseIdType<IdType extends ValidTypesId> {
  * Получить из url вида /path/path2/someID последний элемент (someID)
  * @param inputOptions
  */
-export declare function getIdFromUrl<T extends ValidTypesId>(inputOptions: BaseIdType<T>): ValueType<T>;
+export default function getIdFromUrl<T extends ValidTypesId>(inputOptions: BaseIdType<T>): ValueType<T>;
 export {};

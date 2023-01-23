@@ -16,5 +16,5 @@ type FixedLengthStringOptions = {
  * Ограничить строку до заданного количества символов
  * @param inputOptions
  */
-export declare function fixedLengthString(inputOptions: FixedLengthStringOptions): string;
+export default function fixedLengthString(inputOptions: FixedLengthStringOptions): string;
 export {};

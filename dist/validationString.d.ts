@@ -12,5 +12,5 @@ type Options = {
  * Проверяет строку
  * @param inputOptions
  */
-export declare function validationString(inputOptions: Options): string;
+export default function validationString(inputOptions: Options): string;
 export {};

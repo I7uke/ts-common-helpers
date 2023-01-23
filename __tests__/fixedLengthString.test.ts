@@ -1,4 +1,4 @@
-import {fixedLengthString} from "../src/fixedLengthString";
+import fixedLengthString from "../src/fixedLengthString";
 
 const testString: string = 'Lorem ipsum dolor sit amet, referrentur comprehensam eu usu';
 
@@ -98,7 +98,7 @@ test('Некорректное значение - массив', () => {
 test('Некорректное значение - объект', () => {
     expect(fixedLengthString({
         // @ts-ignore
-        stringToFixed: {test:123},
+        stringToFixed: {test: 123},
         defaultValue: 'Ошибка!',
         maxLength: 11
     })).toStrictEqual('Ошибка!');
@@ -107,7 +107,7 @@ test('Некорректное значение - объект', () => {
 test('Некорректное defaultValue', () => {
     expect(fixedLengthString({
         // @ts-ignore
-        stringToFixed: {test:123},
+        stringToFixed: {test: 123},
         // @ts-ignore
         defaultValue: [],
         maxLength: 11

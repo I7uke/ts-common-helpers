@@ -13,5 +13,5 @@ type ConvertToNumberOptions = {
  * Если передано число, оно будет проверено и в случае успеха возвращено
  * @param inputOptions
  */
-export declare function convertToNumber(inputOptions: ConvertToNumberOptions): number;
+export default function convertToNumber(inputOptions: ConvertToNumberOptions): number;
 export {};

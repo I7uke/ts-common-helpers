@@ -1,4 +1,4 @@
-import {getFileExtensionByName} from "../src/getFileExtensionByName";
+import getFileExtensionByName from "../src/getFileExtensionByName";
 
 test('test.txt', () => {
     expect(getFileExtensionByName('test.txt')).toStrictEqual('txt');
@@ -52,7 +52,7 @@ test('Некорректное значение - Массив', () => {
 
 test('Некорректное значение - Объект', () => {
     // @ts-ignore
-    expect(getFileExtensionByName({test:123})).toStrictEqual('unknown');
+    expect(getFileExtensionByName({test: 123})).toStrictEqual('unknown');
 });
 
 test('Некорректное значение - Число', () => {

@@ -10,13 +10,13 @@ type Options = {
 }
 
 function validationDefaultValue(inputValue: string | null | undefined): string {
-    if(typeof inputValue !== 'string') {
+    if (typeof inputValue !== 'string') {
         return '';
     }
 
     const resultValue = inputValue.trim();
 
-    if(!resultValue){
+    if (!resultValue) {
         return '';
     }
 
@@ -27,7 +27,7 @@ function validationDefaultValue(inputValue: string | null | undefined): string {
  * Проверяет строку
  * @param inputOptions
  */
-export function validationString(inputOptions: Options): string {
+export default function validationString(inputOptions: Options): string {
 
     if (typeof inputOptions.valueForValidation !== 'string') {
         return validationDefaultValue(inputOptions.defaultValue);

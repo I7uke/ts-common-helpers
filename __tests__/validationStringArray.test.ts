@@ -1,4 +1,4 @@
-import {validationStringArray} from "../src/validationStringArray";
+import validationStringArray from "../src/validationStringArray";
 
 test('Массив пустой', () => {
     expect(validationStringArray([])).toStrictEqual([]);

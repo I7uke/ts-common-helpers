@@ -1,1 +1,1 @@
-export declare function getUrlParametersParser(): URLSearchParams;
+export default function getUrlParametersParser(): URLSearchParams;

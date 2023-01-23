@@ -12,5 +12,5 @@ type Options = {
  * Проверить число
  * @param inputOptions
  */
-export declare function validationNumber(inputOptions: Options): number;
+export default function validationNumber(inputOptions: Options): number;
 export {};

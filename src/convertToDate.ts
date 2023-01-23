@@ -46,7 +46,7 @@ function validationDate(inputValue: Date | null | undefined): Date | null {
  * Если передана дата, выполнит ее проверку и в случае успеха вернет переданную дату
  * @param inputOptions
  */
-export function convertToDate(inputOptions: Options): Date | null {
+export default function convertToDate(inputOptions: Options): Date | null {
 
     if (!inputOptions.valueForConvert) {
         return validationDate(inputOptions.defaultValue);
@@ -89,7 +89,7 @@ export function convertToDate(inputOptions: Options): Date | null {
     if (typeof inputOptions.valueForConvert === 'object') {
         const dateObject = validationDate(inputOptions.valueForConvert);
 
-        if(!dateObject){
+        if (!dateObject) {
             return validationDate(inputOptions.defaultValue);
         }
 

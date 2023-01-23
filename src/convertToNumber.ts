@@ -26,7 +26,7 @@ function validationDefaultValue(inputValue: number | undefined | null): number {
  * Если передано число, оно будет проверено и в случае успеха возвращено
  * @param inputOptions
  */
-export function convertToNumber(inputOptions: ConvertToNumberOptions): number {
+export default function convertToNumber(inputOptions: ConvertToNumberOptions): number {
     const defaultValue = validationDefaultValue(inputOptions.defaultValue);
 
     if (typeof inputOptions.valueForConvert === 'number') {

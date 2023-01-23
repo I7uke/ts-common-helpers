@@ -22,12 +22,12 @@ interface BaseIdType<IdType extends ValidTypesId> {
  * Получить из url вида /path/path2/someID последний элемент (someID)
  * @param inputOptions
  */
-export function getIdFromUrl<T extends ValidTypesId>(inputOptions: BaseIdType<T>): ValueType<T> {
-    if(typeof inputOptions.idType !== 'string'){
+export default function getIdFromUrl<T extends ValidTypesId>(inputOptions: BaseIdType<T>): ValueType<T> {
+    if (typeof inputOptions.idType !== 'string') {
         throw new Error('Invalid idType');
     }
 
-    if(inputOptions.idType !== 'string' && inputOptions.idType!== 'number'){
+    if (inputOptions.idType !== 'string' && inputOptions.idType !== 'number') {
         throw new Error('Invalid idType');
     }
 

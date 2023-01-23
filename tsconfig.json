@@ -18,8 +18,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true,
-    //"noEmit": true,
+    "resolveJsonModule": true
   },
   "exclude": [
     "node_modules",

@@ -9,8 +9,8 @@ type Options = {
     readonly defaultValue?: number;
 }
 
-function validationDefaultValue(inputValue: number | undefined | null): number{
-    if(typeof inputValue !== 'number'){
+function validationDefaultValue(inputValue: number | undefined | null): number {
+    if (typeof inputValue !== 'number') {
         return 0;
     }
 
@@ -25,7 +25,7 @@ function validationDefaultValue(inputValue: number | undefined | null): number{
  * Проверить число
  * @param inputOptions
  */
-export function validationNumber(inputOptions: Options): number {
+export default function validationNumber(inputOptions: Options): number {
 
     if (typeof inputOptions.valueForValidation !== 'number') {
         return validationDefaultValue(inputOptions.defaultValue);
@@ -35,7 +35,7 @@ export function validationNumber(inputOptions: Options): number {
         return validationDefaultValue(inputOptions.defaultValue);
     }
 
-    if(!inputOptions.valueForValidation){
+    if (!inputOptions.valueForValidation) {
         // Отсеиваем тут +0 и -0
         return 0;
     }

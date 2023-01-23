@@ -17,5 +17,5 @@ type Options = {
  * Если передана дата, выполнит ее проверку и в случае успеха вернет переданную дату
  * @param inputOptions
  */
-export declare function convertToDate(inputOptions: Options): Date | null;
+export default function convertToDate(inputOptions: Options): Date | null;
 export {};

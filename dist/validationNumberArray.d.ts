@@ -4,4 +4,4 @@
  * Если передан не массив, будет возвращен пустой массив
  * @param arr
  */
-export declare function validationNumberArray(arr: number[] | null | undefined): number[];
+export default function validationNumberArray(arr: number[] | null | undefined): number[];

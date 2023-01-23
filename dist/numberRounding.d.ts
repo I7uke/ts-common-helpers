@@ -12,5 +12,5 @@ type Options = {
  * Округлить число до знака
  * @param inputOptions
  */
-export declare function numberRounding(inputOptions: Options): number;
+export default function numberRounding(inputOptions: Options): number;
 export {};

@@ -1,4 +1,4 @@
-import {convertToDate} from "../src/convertToDate";
+import convertToDate from "../dist/convertToDate";
 
 const defaultValueDate: Date = new Date();
 const testDate = new Date();
@@ -107,7 +107,7 @@ test('Некорректное значение - объект', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
         // @ts-ignore
-        valueForConvert: {test:123}
+        valueForConvert: {test: 123}
     })).toStrictEqual(defaultValueDate);
 });
 
@@ -116,6 +116,6 @@ test('Некорректное defaultValue', () => {
         // @ts-ignore
         defaultValue: [],
         // @ts-ignore
-        valueForConvert: {test:123}
+        valueForConvert: {test: 123}
     })).toStrictEqual(null);
 });
