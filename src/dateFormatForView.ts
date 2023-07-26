@@ -20,37 +20,28 @@ function validationDefaultValue(inputValue: string | undefined | null): string {
 }
 
 export default function dateFormatForView(inputOptions: Options): string {
-    const defaultValue: string = validationDefaultValue(inputOptions.defaultValue);
 
-    if (!inputOptions.date) {
-        return defaultValue;
+    if (Object.prototype.toString.call(inputOptions.date) !== '[object Date]') {
+        return validationDefaultValue(inputOptions.defaultValue);
     }
 
-    if (typeof inputOptions.date !== 'object') {
-        return defaultValue;
+    if(isNaN(Number(inputOptions.date))) {
+        return validationDefaultValue(inputOptions.defaultValue);
     }
 
-    const timestamp: number = Number(inputOptions.date);
+    const date : Date = inputOptions.date as Date; 
 
-    if (!timestamp) {
-        return defaultValue;
-    }
-
-    if (isNaN(timestamp)) {
-        return defaultValue;
-    }
-
-    let day: string = String(inputOptions.date.getDate());
+    let day: string = String(date.getDate());
     if (day.length === 1) {
         day = '0' + day;
     }
 
-    let month: string = String(inputOptions.date.getMonth() + 1);
+    let month: string = String(date.getMonth() + 1);
     if (month.length === 1) {
         month = '0' + month;
     }
 
-    const year: string = String(inputOptions.date.getFullYear());
+    const year: string = String(date.getFullYear());
 
     if (inputOptions.format === 'DD.MM.YYYY') {
         return `${day}.${month}.${year}`;
@@ -60,12 +51,12 @@ export default function dateFormatForView(inputOptions: Options): string {
         return `${day}-${month}-${year}`;
     }
 
-    let hours: string = String(inputOptions.date.getHours());
+    let hours: string = String(date.getHours());
     if (hours.length === 1) {
         hours = '0' + hours;
     }
 
-    let minutes: string = String(inputOptions.date.getMinutes());
+    let minutes: string = String(date.getMinutes());
     if (minutes.length === 1) {
         minutes = '0' + minutes;
     }
@@ -78,7 +69,7 @@ export default function dateFormatForView(inputOptions: Options): string {
         return `${day}-${month}-${year} ${hours}:${minutes}`;
     }
 
-    let seconds: string = String(inputOptions.date.getSeconds());
+    let seconds: string = String(date.getSeconds());
     if (seconds.length === 1) {
         seconds = '0' + seconds;
     }
@@ -91,5 +82,5 @@ export default function dateFormatForView(inputOptions: Options): string {
         return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
     }
 
-    return defaultValue;
+    return validationDefaultValue(inputOptions.defaultValue);
 }

@@ -103,6 +103,14 @@ test('Некорректное значение - массив', () => {
     })).toStrictEqual(defaultValueDate);
 });
 
+test('Некорректное значение - массив', () => {
+    expect(convertToDate({
+        defaultValue: defaultValueDate,
+        // @ts-ignore
+        valueForConvert: [10]
+    })).toStrictEqual(defaultValueDate);
+});
+
 test('Некорректное значение - объект', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
@@ -118,4 +126,11 @@ test('Некорректное defaultValue', () => {
         // @ts-ignore
         valueForConvert: {test: 123}
     })).toStrictEqual(null);
+});
+
+test('Некорректное значение - число меньше нуля', () => {
+    expect(convertToDate({
+        defaultValue: defaultValueDate,
+        valueForConvert: -10
+    })).toStrictEqual(defaultValueDate);
 });

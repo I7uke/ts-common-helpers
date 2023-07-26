@@ -10,3 +10,4 @@ export { default as fixedLengthString } from "./fixedLengthString";
 export { default as dateFormatForView } from "./dateFormatForView";
 export { default as convertToNumber } from "./convertToNumber";
 export { default as convertToDate } from "./convertToDate";
+export { default as checkDate } from "./checkDate";

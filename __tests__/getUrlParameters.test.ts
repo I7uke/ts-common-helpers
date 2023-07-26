@@ -1,4 +1,4 @@
-import getUrlParametersParser from "../src/getUrlParametersParser";
+import getUrlParametersParser from "../dist/getUrlParametersParser";
 
 // @ts-ignore
 delete window.location;

@@ -13,32 +13,16 @@ type Options = {
     readonly changeTime?: 'startDay' | 'endDay';
 }
 
-function validationDate(inputValue: Date | null | undefined): Date | null {
-    if (!inputValue) {
+function validationDate(date: Date | null | undefined): Date | null {
+    if (Object.prototype.toString.call(date) !== '[object Date]') {
         return null;
     }
 
-    if (typeof inputValue !== 'object') {
+    if(isNaN(Number(date))) {
         return null;
     }
 
-    const valueTimestamp = Number(inputValue);
-
-    if (!valueTimestamp) {
-        return null;
-    }
-
-    if (isNaN(valueTimestamp)) {
-        return null;
-    }
-
-    const result = new Date(valueTimestamp);
-
-    if (isNaN(+result)) {
-        return null;
-    }
-
-    return result;
+    return date as Date;
 }
 
 /**

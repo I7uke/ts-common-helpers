@@ -1,4 +1,4 @@
-import fixedLengthString from "../src/fixedLengthString";
+import fixedLengthString from "../dist/fixedLengthString";
 
 const testString: string = 'Lorem ipsum dolor sit amet, referrentur comprehensam eu usu';
 

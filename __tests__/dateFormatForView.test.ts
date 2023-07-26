@@ -1,4 +1,4 @@
-import dateFormatForView from "../src/dateFormatForView";
+import dateFormatForView from "../dist/dateFormatForView";
 
 const testDate = new Date(1674031318308);
 
@@ -97,6 +97,24 @@ test('Некорректное значение - массив', () => {
         defaultValue: 'Ошибка!',
         // @ts-ignore
         date: [],
+        format: 'DD-MM-YYYY HH:MM:SS'
+    })).toStrictEqual('Ошибка!');
+});
+
+test('Некорректное значение - массив', () => {
+    expect(dateFormatForView({
+        defaultValue: 'Ошибка!',
+        // @ts-ignore
+        date: [10],
+        format: 'DD-MM-YYYY HH:MM:SS'
+    })).toStrictEqual('Ошибка!');
+});
+
+test('Некорректное значение - массив', () => {
+    expect(dateFormatForView({
+        defaultValue: 'Ошибка!',
+        // @ts-ignore
+        date: [1, 2, 3],
         format: 'DD-MM-YYYY HH:MM:SS'
     })).toStrictEqual('Ошибка!');
 });

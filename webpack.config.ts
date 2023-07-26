@@ -25,6 +25,7 @@ const config: webpack.Configuration = {
         'validationNumberArray': './src/validationNumberArray.ts',
         'validationString': './src/validationString.ts',
         'validationStringArray': './src/validationStringArray.ts',
+        'checkDate': './src/checkDate.ts',
     },
     devtool: process.env.NODE_ENV === 'production' ? false : 'source-map',
     module: {

@@ -1,4 +1,4 @@
-import getFileExtensionByName from "../src/getFileExtensionByName";
+import getFileExtensionByName from "../dist/getFileExtensionByName";
 
 test('test.txt', () => {
     expect(getFileExtensionByName('test.txt')).toStrictEqual('txt');
