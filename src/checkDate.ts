@@ -1,17 +1,17 @@
 /**
- *  Проверяет является ли переданный объект датой
- * Если объект является датой вернет true иначе вернет false
+ * Проверяет является ли переданный объект датой
+ * Если объект является датой вернет Date иначе вернет null
  * @param date 
  * @returns 
  */
-export default function checkDate(date: any): boolean {
+export default function checkDate(date: any): Date | null {
     if (Object.prototype.toString.call(date) !== '[object Date]') {
-        return false;
+        return null;
     }
 
     if(isNaN(Number(date))) {
-        return false;
+        return null;
     }
 
-    return true;
+    return date as Date;
 }
