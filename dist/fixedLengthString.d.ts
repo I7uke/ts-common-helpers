@@ -2,7 +2,7 @@ type FixedLengthStringOptions = {
     /**
      * Целевая строка
      */
-    readonly stringToFixed: string | undefined | null;
+    readonly value: string | undefined | null;
     /**
      * Максимальная длинна строки
      */
@@ -16,5 +16,5 @@ type FixedLengthStringOptions = {
  * Ограничить строку до заданного количества символов
  * @param inputOptions
  */
-export default function fixedLengthString(inputOptions: FixedLengthStringOptions): string;
+export default function fixedLengthString(options: FixedLengthStringOptions): string;
 export {};

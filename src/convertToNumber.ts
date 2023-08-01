@@ -1,54 +1,35 @@
-type ConvertToNumberOptions = {
-    /**
-     * Значение по умолчанию, применяется если не удалось выполнить преобразование
-     */
-    readonly defaultValue?: number;
-    /**
-     * Значение для преобразования
-     */
-    readonly valueForConvert: string | number | undefined | null;
-}
+import { InputOptions } from "./models/inputOptions";
 
-function validationDefaultValue(inputValue: number | undefined | null): number {
-    if (typeof inputValue !== 'number') {
-        return 0;
-    }
 
-    if (isNaN(inputValue)) {
-        return 0;
-    }
 
-    return inputValue;
-}
+type ValueForConvert = string | number | undefined | null;
 
 /**
  * Перевести строку к числу
- * Если передано число, оно будет проверено и в случае успеха возвращено
  * @param inputOptions
  */
-export default function convertToNumber(inputOptions: ConvertToNumberOptions): number {
-    const defaultValue = validationDefaultValue(inputOptions.defaultValue);
+export default function convertToNumber(options: InputOptions<ValueForConvert, number>): number {
 
-    if (typeof inputOptions.valueForConvert === 'number') {
-        if (isNaN(inputOptions.valueForConvert)) {
-            return defaultValue;
+    if (typeof options.value === 'number') {
+        if (isNaN(options.value)) {
+            return options.defaultValue || 0;
         }
 
-        return inputOptions.valueForConvert;
+        return options.value;
     }
 
-    if (typeof inputOptions.valueForConvert !== 'string') {
-        return defaultValue;
+    if (typeof options.value !== 'string') {
+        return options.defaultValue || 0;
     }
 
-    if (!inputOptions.valueForConvert) {
-        return defaultValue;
+    if (!options.value) {
+        return options.defaultValue || 0;
     }
 
-    const resultNumber: number = Number(inputOptions.valueForConvert);
+    const resultNumber: number = Number(options.value);
 
     if (isNaN(resultNumber)) {
-        return defaultValue;
+        return options.defaultValue || 0;
     }
 
     return resultNumber;

@@ -2,7 +2,7 @@ type Options = {
     /**
      * Значение для преобразования
      */
-    readonly valueForConvert: string | Date | number | null | undefined;
+    readonly value: string | number | null | undefined;
     /**
      * Значение по умолчанию, применяется если не удалось выполнить преобразование
      */
@@ -14,8 +14,7 @@ type Options = {
 };
 /**
  * Преобразовать строку или число к дате
- * Если передана дата, выполнит ее проверку и в случае успеха вернет переданную дату
  * @param inputOptions
  */
-export default function convertToDate(inputOptions: Options): Date | null;
+export default function convertToDate(options: Options): Date | null;
 export {};

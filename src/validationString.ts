@@ -1,42 +1,22 @@
-type Options = {
-    /**
-     * Строка для проверки
-     */
-    readonly valueForValidation: string | null | undefined;
-    /**
-     * Значение по умолчанию, будет возвращено, если переданное значение не является строкой или пустой строкой
-     */
-    readonly defaultValue?: string;
-}
+import { InputOptions } from "./models/inputOptions";
 
-function validationDefaultValue(inputValue: string | null | undefined): string {
-    if (typeof inputValue !== 'string') {
-        return '';
-    }
-
-    const resultValue = inputValue.trim();
-
-    if (!resultValue) {
-        return '';
-    }
-
-    return resultValue;
-}
+type ValueForValidation = string | null | undefined;
 
 /**
  * Проверяет строку
+ * Значение по умолчанию, будет возвращено, если переданное значение не является строкой или пустой строкой
  * @param inputOptions
  */
-export default function validationString(inputOptions: Options): string {
+export default function validationString(options: InputOptions<ValueForValidation, string>): string {
 
-    if (typeof inputOptions.valueForValidation !== 'string') {
-        return validationDefaultValue(inputOptions.defaultValue);
+    if (typeof options.value !== 'string') {
+        return options.defaultValue || '';
     }
 
-    const resultString = inputOptions.valueForValidation.trim();
+    const resultString = options.value.trim();
 
     if (!resultString) {
-        return validationDefaultValue(inputOptions.defaultValue);
+        return options.defaultValue || '';
     }
 
     return resultString;

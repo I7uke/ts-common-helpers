@@ -1,16 +1,9 @@
-type Options = {
-    /**
-     * Число для проверки
-     */
-    readonly valueForValidation: number | null | undefined;
-    /**
-     * Значение по умолчанию, будет возвращено, в случае если число для проверки не являлось числом
-     */
-    readonly defaultValue?: number;
-};
+import { InputOptions } from "./models/inputOptions";
+type ValueForValidation = number | null | undefined;
 /**
  * Проверить число
+ * Значение по умолчанию, будет возвращено, в случае если число для проверки не являлось числом
  * @param inputOptions
  */
-export default function validationNumber(inputOptions: Options): number;
+export default function validationNumber(options: InputOptions<ValueForValidation, number>): number;
 export {};

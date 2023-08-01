@@ -12,20 +12,7 @@ const IS_DEVELOPMENT: boolean = process.env.NODE_ENV === 'development';
 const config: webpack.Configuration = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     entry: {
-        'index': './src/index.ts',
-        'convertToDate': './src/convertToDate.ts',
-        'convertToNumber': './src/convertToNumber.ts',
-        'dateFormatForView': './src/dateFormatForView.ts',
-        'fixedLengthString': './src/fixedLengthString.ts',
-        'getFileExtensionByName': './src/getFileExtensionByName.ts',
-        'getIdFromUrl': './src/getIdFromUrl.ts',
-        'getUrlParametersParser': './src/getUrlParametersParser.ts',
-        'numberRounding': './src/numberRounding.ts',
-        'validationNumber': './src/validationNumber.ts',
-        'validationNumberArray': './src/validationNumberArray.ts',
-        'validationString': './src/validationString.ts',
-        'validationStringArray': './src/validationStringArray.ts',
-        'checkDate': './src/checkDate.ts',
+        'index': './src/index.ts'
     },
     devtool: process.env.NODE_ENV === 'production' ? false : 'source-map',
     module: {

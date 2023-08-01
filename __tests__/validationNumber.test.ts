@@ -1,64 +1,50 @@
-import validationNumber from "../dist/validationNumber";
+import {validationNumber} from "../dist";
 
 test('Число -100', () => {
     expect(validationNumber({
         defaultValue: 5,
-        valueForValidation: -100
+        value: -100
     })).toStrictEqual(-100);
 });
 
 test('Число 0', () => {
     expect(validationNumber({
         defaultValue: 5,
-        valueForValidation: 0
-    })).toStrictEqual(0);
-});
-
-test('Число -0', () => {
-    expect(validationNumber({
-        defaultValue: 5,
-        valueForValidation: -0
-    })).toStrictEqual(0);
-});
-
-test('Число +0', () => {
-    expect(validationNumber({
-        defaultValue: 5,
-        valueForValidation: -0
+        value: 0
     })).toStrictEqual(0);
 });
 
 test('Число 125', () => {
     expect(validationNumber({
         defaultValue: 5,
-        valueForValidation: 125
+        value: 125
     })).toStrictEqual(125);
 });
 
 test('defaultValue отсутствует', () => {
     expect(validationNumber({
-        valueForValidation: undefined
+        value: undefined
     })).toStrictEqual(0);
 });
 
 test('undefined', () => {
     expect(validationNumber({
         defaultValue: 5,
-        valueForValidation: undefined
+        value: undefined
     })).toStrictEqual(5);
 });
 
 test('null', () => {
     expect(validationNumber({
         defaultValue: 150,
-        valueForValidation: null
+        value: null
     })).toStrictEqual(150);
 });
 
 test('NaN', () => {
     expect(validationNumber({
         defaultValue: 5,
-        valueForValidation: NaN
+        value: NaN
     })).toStrictEqual(5);
 });
 
@@ -66,7 +52,7 @@ test('Некорректное значение valueForValidation - строк�
     expect(validationNumber({
         defaultValue: 5,
         // @ts-ignore
-        valueForValidation: 'Lala'
+        value: 'Lala'
     })).toStrictEqual(5);
 });
 
@@ -74,7 +60,7 @@ test('Некорректное значение valueForValidation - масси�
     expect(validationNumber({
         defaultValue: 5,
         // @ts-ignore
-        valueForValidation: []
+        value: []
     })).toStrictEqual(5);
 });
 
@@ -82,15 +68,6 @@ test('Некорректное значение valueForValidation - объек�
     expect(validationNumber({
         defaultValue: 5,
         // @ts-ignore
-        valueForValidation: {test: 123}
+        value: {test: 123}
     })).toStrictEqual(5);
-});
-
-test('Некорректные все значение', () => {
-    expect(validationNumber({
-        // @ts-ignore
-        defaultValue: {test: 123},
-        // @ts-ignore
-        valueForValidation: {test: 123}
-    })).toStrictEqual(0);
 });

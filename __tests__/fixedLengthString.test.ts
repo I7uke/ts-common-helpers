@@ -1,17 +1,17 @@
-import fixedLengthString from "../dist/fixedLengthString";
+import {fixedLengthString} from "../dist";
 
 const testString: string = 'Lorem ipsum dolor sit amet, referrentur comprehensam eu usu';
 
 test('Строка', () => {
     expect(fixedLengthString({
-        stringToFixed: testString,
+        value: testString,
         maxLength: 11
     })).toStrictEqual('Lorem ipsum...');
 });
 
 test('Пустая строка, без значения по умолчанию', () => {
     expect(fixedLengthString({
-        stringToFixed: '',
+        value: '',
         maxLength: 11
     })).toStrictEqual('');
 });
@@ -19,42 +19,42 @@ test('Пустая строка, без значения по умолчанию
 test('Пустая строка, с значением по умолчанию', () => {
     expect(fixedLengthString({
         defaultValue: 'Пустая строка!',
-        stringToFixed: '',
+        value: '',
         maxLength: 11
     })).toStrictEqual('Пустая строка!');
 });
 
 test('maxLength: -1', () => {
     expect(fixedLengthString({
-        stringToFixed: testString,
+        value: testString,
         maxLength: -1
     })).toStrictEqual(testString);
 });
 
 test('maxLength: 0', () => {
     expect(fixedLengthString({
-        stringToFixed: testString,
+        value: testString,
         maxLength: -1
     })).toStrictEqual(testString);
 });
 
 test('maxLength: 1', () => {
     expect(fixedLengthString({
-        stringToFixed: testString,
+        value: testString,
         maxLength: 1
     })).toStrictEqual('L...');
 });
 
 test('Пустой defaultValue', () => {
     expect(fixedLengthString({
-        stringToFixed: undefined,
+        value: undefined,
         maxLength: 11
     })).toStrictEqual('');
 });
 
 test('undefined', () => {
     expect(fixedLengthString({
-        stringToFixed: undefined,
+        value: undefined,
         defaultValue: 'Ошибка!',
         maxLength: 11
     })).toStrictEqual('Ошибка!');
@@ -62,7 +62,7 @@ test('undefined', () => {
 
 test('null', () => {
     expect(fixedLengthString({
-        stringToFixed: null,
+        value: null,
         defaultValue: 'Ошибка!',
         maxLength: 11
     })).toStrictEqual('Ошибка!');
@@ -71,7 +71,7 @@ test('null', () => {
 test('Некорректное значение - NaN', () => {
     expect(fixedLengthString({
         // @ts-ignore
-        stringToFixed: NaN,
+        value: NaN,
         defaultValue: 'Ошибка!',
         maxLength: 11
     })).toStrictEqual('Ошибка!');
@@ -80,7 +80,7 @@ test('Некорректное значение - NaN', () => {
 test('Некорректное значение - число', () => {
     expect(fixedLengthString({
         // @ts-ignore
-        stringToFixed: NaN,
+        value: NaN,
         defaultValue: 'Ошибка!',
         maxLength: 11
     })).toStrictEqual('Ошибка!');
@@ -89,7 +89,7 @@ test('Некорректное значение - число', () => {
 test('Некорректное значение - массив', () => {
     expect(fixedLengthString({
         // @ts-ignore
-        stringToFixed: [],
+        value: [],
         defaultValue: 'Ошибка!',
         maxLength: 11
     })).toStrictEqual('Ошибка!');
@@ -98,18 +98,8 @@ test('Некорректное значение - массив', () => {
 test('Некорректное значение - объект', () => {
     expect(fixedLengthString({
         // @ts-ignore
-        stringToFixed: {test: 123},
+        value: {test: 123},
         defaultValue: 'Ошибка!',
         maxLength: 11
     })).toStrictEqual('Ошибка!');
-});
-
-test('Некорректное defaultValue', () => {
-    expect(fixedLengthString({
-        // @ts-ignore
-        stringToFixed: {test: 123},
-        // @ts-ignore
-        defaultValue: [],
-        maxLength: 11
-    })).toStrictEqual('');
 });

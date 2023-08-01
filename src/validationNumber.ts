@@ -1,44 +1,21 @@
-type Options = {
-    /**
-     * Число для проверки
-     */
-    readonly valueForValidation: number | null | undefined;
-    /**
-     * Значение по умолчанию, будет возвращено, в случае если число для проверки не являлось числом
-     */
-    readonly defaultValue?: number;
-}
+import { InputOptions } from "./models/inputOptions";
 
-function validationDefaultValue(inputValue: number | undefined | null): number {
-    if (typeof inputValue !== 'number') {
-        return 0;
-    }
-
-    if (isNaN(inputValue)) {
-        return 0;
-    }
-
-    return inputValue;
-}
+type ValueForValidation = number | null | undefined;
 
 /**
  * Проверить число
+ * Значение по умолчанию, будет возвращено, в случае если число для проверки не являлось числом
  * @param inputOptions
  */
-export default function validationNumber(inputOptions: Options): number {
+export default function validationNumber(options: InputOptions<ValueForValidation, number>): number {
 
-    if (typeof inputOptions.valueForValidation !== 'number') {
-        return validationDefaultValue(inputOptions.defaultValue);
+    if (typeof options.value !== 'number') {
+        return options.defaultValue || 0;
     }
 
-    if (isNaN(inputOptions.valueForValidation)) {
-        return validationDefaultValue(inputOptions.defaultValue);
+    if (isNaN(options.value)) {
+        return options.defaultValue || 0;
     }
 
-    if (!inputOptions.valueForValidation) {
-        // Отсеиваем тут +0 и -0
-        return 0;
-    }
-
-    return inputOptions.valueForValidation;
+    return options.value;
 }

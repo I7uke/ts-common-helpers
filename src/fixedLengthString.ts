@@ -2,7 +2,7 @@ type FixedLengthStringOptions = {
     /**
      * Целевая строка
      */
-    readonly stringToFixed: string | undefined | null;
+    readonly value: string | undefined | null;
     /**
      * Максимальная длинна строки
      */
@@ -11,16 +11,6 @@ type FixedLengthStringOptions = {
      * Значение по умолчанию, будет возвращено в случае если целевое значение не строка или пустая строка
      */
     readonly defaultValue?: string;
-}
-
-function validationDefaultValue(inputValue: string | undefined | null): string {
-    const emptyValue: string = '';
-
-    if (typeof inputValue !== 'string') {
-        return emptyValue;
-    }
-
-    return inputValue;
 }
 
 function validationMaxLength(inputValue: number | string | null): number {
@@ -39,25 +29,24 @@ function validationMaxLength(inputValue: number | string | null): number {
  * Ограничить строку до заданного количества символов
  * @param inputOptions
  */
-export default function fixedLengthString(inputOptions: FixedLengthStringOptions): string {
-    const defaultValue: string = validationDefaultValue(inputOptions.defaultValue);
-    const maxLength: number = validationMaxLength(inputOptions.maxLength);
+export default function fixedLengthString(options: FixedLengthStringOptions): string {
+    const maxLength: number = validationMaxLength(options.maxLength);
 
-    if (typeof inputOptions.stringToFixed !== 'string') {
-        return defaultValue;
+    if (typeof options.value !== 'string') {
+        return options.defaultValue || '';
     }
 
-    if (!inputOptions.stringToFixed) {
-        return defaultValue;
+    if (!options.value) {
+        return options.defaultValue || '';
     }
 
     if (maxLength <= 0) {
-        return inputOptions.stringToFixed;
+        return options.value;
     }
 
-    if (inputOptions.stringToFixed.length >= maxLength) {
-        return `${inputOptions.stringToFixed.slice(0, maxLength)}...`;
+    if (options.value.length >= maxLength) {
+        return `${options.value.slice(0, maxLength)}...`;
     }
 
-    return inputOptions.stringToFixed;
+    return options.value;
 }

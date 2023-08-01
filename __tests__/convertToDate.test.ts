@@ -1,4 +1,4 @@
-import convertToDate from "../dist/convertToDate";
+import {convertToDate} from "../dist";
 
 const defaultValueDate: Date = new Date();
 const testDate = new Date();
@@ -9,45 +9,38 @@ testDateStartDay.setHours(0, 0, 0, 0);
 const testDateEndDay = new Date(+testDate);
 testDateEndDay.setHours(23, 59, 0, 0);
 
-test('Date object', () => {
-    expect(convertToDate({
-        defaultValue: defaultValueDate,
-        valueForConvert: testDate
-    })).toStrictEqual(testDate);
-});
-
 test('timestamp', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
-        valueForConvert: +testDate
+        value: +testDate
     })).toStrictEqual(testDate);
 });
 
 test('ISOS', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
-        valueForConvert: testDate.toISOString()
+        value: testDate.toISOString()
     })).toStrictEqual(testDate);
 });
 
 test('UTC', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
-        valueForConvert: testDate.toUTCString()
+        value: testDate.toUTCString()
     })).toStrictEqual(testDate);
 });
 
 test('JSON', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
-        valueForConvert: testDate.toJSON()
+        value: testDate.toJSON()
     })).toStrictEqual(testDate);
 });
 
 test('Начало дня', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
-        valueForConvert: testDateStartDay.toJSON(),
+        value: testDateStartDay.toJSON(),
         changeTime: 'startDay'
     })).toStrictEqual(testDateStartDay);
 });
@@ -55,7 +48,7 @@ test('Начало дня', () => {
 test('Конец дня', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
-        valueForConvert: testDateEndDay.toJSON(),
+        value: testDateEndDay.toJSON(),
         changeTime: 'endDay'
     })).toStrictEqual(testDateEndDay);
 });
@@ -63,35 +56,35 @@ test('Конец дня', () => {
 test('Invalid Date', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
-        valueForConvert: new Date('Lala')
+        value: new Date('Lala').toJSON()
     })).toStrictEqual(defaultValueDate);
 });
 
 test('defaultValue null', () => {
     expect(convertToDate({
         defaultValue: null,
-        valueForConvert: new Date('Lala')
+        value: new Date('Lala').toJSON()
     })).toStrictEqual(null);
 });
 
 test('undefined', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
-        valueForConvert: undefined
+        value: undefined
     })).toStrictEqual(defaultValueDate);
 });
 
 test('null', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
-        valueForConvert: null
+        value: null
     })).toStrictEqual(defaultValueDate);
 });
 
 test('NaN', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
-        valueForConvert: NaN
+        value: NaN
     })).toStrictEqual(defaultValueDate);
 });
 
@@ -99,7 +92,7 @@ test('Некорректное значение - массив', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
         // @ts-ignore
-        valueForConvert: []
+        value: []
     })).toStrictEqual(defaultValueDate);
 });
 
@@ -107,7 +100,7 @@ test('Некорректное значение - массив', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
         // @ts-ignore
-        valueForConvert: [10]
+        value: [10]
     })).toStrictEqual(defaultValueDate);
 });
 
@@ -115,7 +108,7 @@ test('Некорректное значение - объект', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
         // @ts-ignore
-        valueForConvert: {test: 123}
+        value: {test: 123}
     })).toStrictEqual(defaultValueDate);
 });
 
@@ -124,13 +117,13 @@ test('Некорректное defaultValue', () => {
         // @ts-ignore
         defaultValue: [],
         // @ts-ignore
-        valueForConvert: {test: 123}
+        value: {test: 123}
     })).toStrictEqual(null);
 });
 
 test('Некорректное значение - число меньше нуля', () => {
     expect(convertToDate({
         defaultValue: defaultValueDate,
-        valueForConvert: -10
+        value: -10
     })).toStrictEqual(defaultValueDate);
 });

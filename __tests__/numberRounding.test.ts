@@ -1,4 +1,4 @@
-import numberRounding from "../dist/numberRounding";
+import {numberRounding} from "../dist";
 
 test('+0', () => {
     expect(numberRounding({
@@ -68,7 +68,6 @@ test('Отрицательное округление до 2 знака', () => 
     })).toStrictEqual(-123.43);
 });
 
-
 test('undefined', () => {
     expect(numberRounding({
         number: undefined,
@@ -98,7 +97,6 @@ test('Некорректное значение number - строка', () => {
     })).toStrictEqual(0);
 });
 
-
 test('Некорректное значение number - массив', () => {
     expect(numberRounding({
         // @ts-ignore
@@ -115,7 +113,7 @@ test('Некорректное значение number - объект', () => {
     })).toStrictEqual(0);
 });
 
-test('Некорректное значение accuracy - объект', () => {
+test('Некорректное значение accuracy - строка', () => {
     expect(numberRounding({
         number: 1234.56789,
         // @ts-ignore
@@ -123,11 +121,72 @@ test('Некорректное значение accuracy - объект', () => 
     })).toStrictEqual(1235);
 });
 
-test('Все некорректные значения', () => {
+test('Стресс тест 1', () => {
     expect(numberRounding({
-        // @ts-ignore
-        number: [],
-        // @ts-ignore
-        accuracy: 'lala'
-    })).toStrictEqual(0);
+        number: 1.005,
+        accuracy: 2
+    })).toStrictEqual(1.01);
+});
+
+test('Стресс тест 2', () => {
+    expect(numberRounding({
+        number: 1.3549999999999998,
+        accuracy: 2
+    })).toStrictEqual(1.35);
+});
+
+test('Стресс тест 3', () => {
+    expect(numberRounding({
+        number: 1.7777777,
+        accuracy: 2
+    })).toStrictEqual(1.78);
+});
+
+test('Стресс тест 4', () => {
+    expect(numberRounding({
+        number: 501.49999999999994,
+        accuracy: 2
+    })).toStrictEqual(501.5);
+});
+
+test('Стресс тест 5', () => {
+    expect(numberRounding({
+        number: 4.6850000000000005,
+        accuracy: 2
+    })).toStrictEqual(4.69);
+});
+
+test('Стресс тест 6', () => {
+    expect(numberRounding({
+        number: -1.005,
+        accuracy: 2
+    })).toStrictEqual(-1.01);
+});
+
+test('Стресс тест 7', () => {
+    expect(numberRounding({
+        number: -2.175,
+        accuracy: 2
+    })).toStrictEqual(-2.18);
+});
+
+test('Стресс тест 8', () => {
+    expect(numberRounding({
+        number: -4.6850000000000005,
+        accuracy: 4
+    })).toStrictEqual(-4.685);
+});
+
+test('Стресс тест 9', () => {
+    expect(numberRounding({
+        number: 501.49999999999994,
+        accuracy: 4
+    })).toStrictEqual(501.5);
+});
+
+test('Стресс тест 10', () => {
+    expect(numberRounding({
+        number: 501.49999999999994,
+        accuracy: 2
+    })).toStrictEqual(501.5);
 });

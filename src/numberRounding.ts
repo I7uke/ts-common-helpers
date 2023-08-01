@@ -13,27 +13,23 @@ type Options = {
  * Округлить число до знака
  * @param inputOptions
  */
-export default function numberRounding(inputOptions: Options): number {
-    if (typeof inputOptions.number !== 'number') {
+export default function numberRounding(options: Options): number {
+    if (typeof options.number !== 'number') {
         return 0;
     }
 
-    if (isNaN(inputOptions.number)) {
+    if (isNaN(options.number)) {
         return 0;
     }
 
-    const numberToRound: number = inputOptions.number;
-    const inputAccuracy = inputOptions.accuracy;
-
-    if (typeof inputAccuracy !== 'number') {
-        return Math.round(numberToRound);
+    let accuracy: number = typeof options.accuracy === 'number' ? options.accuracy : 0;
+    
+    if (accuracy <= 0) {
+        return Math.round(options.number);
     }
 
-    if (inputAccuracy <= 0) {
-        return Math.round(numberToRound);
-    }
-
-    const accuracy: number = Math.pow(10, inputAccuracy);
-
-    return Math.round(numberToRound * accuracy) / accuracy;
+    const sign: number = Math.sign(options.number);
+    const positiveNumber = Math.abs(options.number);
+    const result = Number(`${Math.round(Number(`${positiveNumber}e+${accuracy}`))}e-${accuracy}`);
+    return result * sign;
 }
