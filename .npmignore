@@ -7,6 +7,7 @@ coverage/
 __tests__/
 src/
 .babelrc
+.browserslistrc
 jest.config.js
 tsconfig-for-webpack-config.json
 tsconfig.json
