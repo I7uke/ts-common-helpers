@@ -1,4 +1,4 @@
-import {validationNumberArray} from "../dist";
+import validationNumberArray from "../src/validationNumberArray";
 
 test('Массив пустой', () => {
     expect(validationNumberArray([])).toStrictEqual([]);

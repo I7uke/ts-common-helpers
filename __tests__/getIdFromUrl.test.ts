@@ -1,4 +1,4 @@
-import {getIdFromUrl} from "../dist";
+import getIdFromUrl from "../src/getIdFromUrl";
 
 test('ID является числом,ожидается число', () => {
     expect(getIdFromUrl({

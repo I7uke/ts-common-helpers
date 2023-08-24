@@ -1,4 +1,4 @@
-import {numberRounding} from "../dist";
+import numberRounding from "../src/numberRounding";
 
 test('+0', () => {
     expect(numberRounding({

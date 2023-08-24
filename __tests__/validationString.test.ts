@@ -1,4 +1,4 @@
-import {validationString} from "../dist";
+import validationString from "../src/validationString";
 
 test('Строка', () => {
     expect(validationString({
