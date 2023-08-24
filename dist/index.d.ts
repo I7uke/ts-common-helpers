@@ -11,3 +11,4 @@ export { default as dateFormatForView } from "./dateFormatForView";
 export { default as convertToNumber } from "./convertToNumber";
 export { default as convertToDate } from "./convertToDate";
 export { default as checkDate } from "./checkDate";
+export { default as getPagination } from "./getPagination";
