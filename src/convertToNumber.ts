@@ -25,8 +25,8 @@ export default function convertToNumber(options: InputOptions<ValueForConvert, n
     if (!options.value) {
         return options.defaultValue || 0;
     }
-
-    const resultNumber: number = Number(options.value);
+    const valueString: string = options.value.replace(/,/g, '.');
+    const resultNumber: number = Number(valueString);
 
     if (isNaN(resultNumber)) {
         return options.defaultValue || 0;

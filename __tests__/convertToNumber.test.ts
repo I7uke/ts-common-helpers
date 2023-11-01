@@ -60,7 +60,7 @@ test('Строковое -1234,56789', () => {
     expect(convertToNumber({
         defaultValue: 100,
         value: '-1234,56789'
-    })).toStrictEqual(100);
+    })).toStrictEqual(-1234.56789);
 });
 
 test('Строковое 1234.56789', () => {
@@ -74,6 +74,20 @@ test('Строковое 1234,56789', () => {
     expect(convertToNumber({
         defaultValue: 100,
         value: '1234,56789'
+    })).toStrictEqual(1234.56789);
+});
+
+test('Строковое 12,34,56,789', () => {
+    expect(convertToNumber({
+        defaultValue: 100,
+        value: '12,34,56,789'
+    })).toStrictEqual(100);
+});
+
+test('Строковое 12.34,56,789', () => {
+    expect(convertToNumber({
+        defaultValue: 100,
+        value: '12.34,56,789'
     })).toStrictEqual(100);
 });
 
