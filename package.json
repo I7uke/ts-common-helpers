@@ -1,6 +1,6 @@
 {
   "name": "ts-common-helpers",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "scripts": {
     "test": "jest --coverage",
