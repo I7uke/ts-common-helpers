@@ -1,4 +1,4 @@
-import checkDate from "../src/checkDate";
+import { checkDate } from "../dist";
 
 const testValidDate = new Date();
 

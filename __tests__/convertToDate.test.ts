@@ -1,4 +1,4 @@
-import convertToDate from "../src/convertToDate";
+import { convertToDate } from "../dist";
 
 const defaultValueDate: Date = new Date();
 const testDate = new Date();

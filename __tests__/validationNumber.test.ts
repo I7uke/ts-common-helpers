@@ -1,4 +1,4 @@
-import validationNumber from "../src/validationNumber";
+import { validationNumber } from "../dist";
 
 test('Число -100', () => {
     expect(validationNumber({

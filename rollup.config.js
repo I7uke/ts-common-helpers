@@ -1,28 +1,32 @@
-import terser from '@rollup/plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
-import { babel } from '@rollup/plugin-babel';
+import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
-import cleaner from 'rollup-plugin-cleaner';
+import * as fs from 'fs';
+import * as path from 'path';
+
+function deleteFolder(folderPath) {
+    if (!fs.existsSync(folderPath) ) {
+        return;
+    } 
+
+    fs.rmSync(folderPath, { recursive: true, force: true });
+}
+
+deleteFolder(path.resolve('./dist'));
 
 /** @type {import('rollup').RollupOptions} */
 const rollupOptions = {
 	input: './src/index.ts',
 	output: {
 		file: './dist/index.js',
-		format: 'umd',
+		format: 'es',
 		name: 'bundle',
 		sourcemap: false
 	},
 	plugins: [
-		cleaner({
-			targets: [
-				'./dist'
-			]
-		}),
 		resolve(),
 		terser(),
 		typescript(),
-		babel(),
 	]
 };
 

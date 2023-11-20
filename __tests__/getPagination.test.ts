@@ -1,4 +1,4 @@
-import getPagination from '../src/getPagination'
+import { getPagination } from '../dist';
 
 test('Тест пагинация 1', () => {
     expect(getPagination({

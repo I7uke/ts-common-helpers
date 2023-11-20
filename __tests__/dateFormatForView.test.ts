@@ -1,4 +1,4 @@
-import dateFormatForView from "../src/dateFormatForView";
+import { dateFormatForView } from "../dist";
 
 const testDate = new Date(1674031318308);
 
