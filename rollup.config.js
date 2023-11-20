@@ -4,11 +4,14 @@ import { babel } from '@rollup/plugin-babel';
 import typescript from '@rollup/plugin-typescript';
 import cleaner from 'rollup-plugin-cleaner';
 
-export default {
+/** @type {import('rollup').RollupOptions} */
+const rollupOptions = {
 	input: './src/index.ts',
 	output: {
 		file: './dist/index.js',
-		format: 'es'
+		format: 'umd',
+		name: 'bundle',
+		sourcemap: false
 	},
 	plugins: [
 		cleaner({
@@ -23,3 +26,4 @@ export default {
 	]
 };
 
+export default rollupOptions;
