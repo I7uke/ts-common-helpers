@@ -9,6 +9,8 @@ type Options = {
     readonly defaultValue?: Date | null;
     /**
      * Изменить время полученной даты
+     * startDay - Начало дня, hours: 0, min: 0, sec: 0, ms: 0
+     * endDay - Конец дня hours: 23, min: 59, sec: 0, ms: 0
      */
     readonly changeTime?: 'startDay' | 'endDay';
 }

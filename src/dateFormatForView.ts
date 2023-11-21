@@ -1,12 +1,21 @@
 type Options = {
+    /**
+     * Значение по умолчанию, будет возвращено если целевое значение не является датой или является не валидной датой
+     */
     readonly defaultValue?: string;
+    /**
+     * Дата для приведения к формату
+     */
     readonly date: Date | undefined | null;
+    /**
+     * Формат даты для вывода
+     */
     readonly format: 'DD.MM.YYYY'
-        | 'DD-MM-YYYY'
-        | 'DD.MM.YYYY HH:MM'
-        | 'DD-MM-YYYY HH:MM'
-        | 'DD.MM.YYYY HH:MM:SS'
-        | 'DD-MM-YYYY HH:MM:SS';
+    | 'DD-MM-YYYY'
+    | 'DD.MM.YYYY HH:MM'
+    | 'DD-MM-YYYY HH:MM'
+    | 'DD.MM.YYYY HH:MM:SS'
+    | 'DD-MM-YYYY HH:MM:SS';
 }
 
 function validationDefaultValue(inputValue: string | undefined | null): string {
@@ -25,11 +34,11 @@ export default function dateFormatForView(inputOptions: Options): string {
         return validationDefaultValue(inputOptions.defaultValue);
     }
 
-    if(isNaN(Number(inputOptions.date))) {
+    if (isNaN(Number(inputOptions.date))) {
         return validationDefaultValue(inputOptions.defaultValue);
     }
 
-    const date : Date = inputOptions.date as Date; 
+    const date: Date = inputOptions.date as Date;
 
     let day: string = String(date.getDate());
     if (day.length === 1) {

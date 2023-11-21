@@ -1,7 +1,5 @@
 import { InputOptions } from "./models/inputOptions";
 
-
-
 type ValueForConvert = string | number | undefined | null;
 
 /**
