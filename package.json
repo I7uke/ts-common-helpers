@@ -18,7 +18,7 @@
     "test-validationStringArray": "jest validationStringArray.test.ts --coverage",
     "test-checkDate": "jest checkDate.test.ts --coverage",
     "test-getPagination": "jest getPagination.test.ts --coverage",
-    "build-prod": "rollup --config --bundleConfigAsCjs"
+    "build-prod": "rollup --config"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   },
   "main": "./dist",
   "author": "Ivan",
+  "type": "module",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CoraxEidolon/ts-common-helpers/issues"
@@ -55,6 +56,7 @@
     "rollup": "4.5.0",
     "rollup-plugin-cleaner": "1.0.0",
     "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-visualizer": "^5.9.2",
     "tslib": "2.6.2"
   }
 }
